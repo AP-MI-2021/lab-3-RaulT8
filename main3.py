@@ -88,6 +88,8 @@ def main():
             print(get_longest_same_bit_counts(l))
         elif optiune =="x":
             break
+        else:
+            print("Optiune invalida! Reincercati: ")
 
 main()
 
