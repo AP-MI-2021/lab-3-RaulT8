@@ -27,7 +27,7 @@ def secvPrime(l):
     return True
 
 
-def get_longest_all_primes(l): #Determina cea mai lunga secventa din l de nr prime
+def get_longest_all_primes(l):
     secvMax= []
     for i in range(len(l)):
         for j in range(i,len(l)):
@@ -42,7 +42,6 @@ def get_longest_same_bit_counts(l):
             if bits(l[i]) == bits(l[j]) and len(l[i:j]) > len(secvMax):
                 secvMax = l[i:j+1]
     return secvMax
-
 
 
 def test_get_longest_all_primes():
