@@ -1,4 +1,5 @@
 from typing import List
+import math
 
 def isPrime(n):
     if n<2:
@@ -10,6 +11,13 @@ def isPrime(n):
             return False
     return True
 
+def secvPrime(l):
+    for x in l:
+        if isPrime(x) == False:
+            return False
+    return True
+
+
 def bits(n):
     ones=0
     while(n>0):
@@ -19,13 +27,12 @@ def bits(n):
         n=n//2
     return ones
 
-
-def secvPrime(l):
-    for x in l:
-        if isPrime(x) == False:
-            return False
+def cresc(l):
+    for i in range(len(l)):
+        for j in range(i+1,len(l)):
+            if int(l[i]) > int(l[j]):
+                return False
     return True
-
 
 def get_longest_all_primes(l):
     secvMax= []
@@ -43,6 +50,14 @@ def get_longest_same_bit_counts(l):
                 secvMax = l[i:j+1]
     return secvMax
 
+def get_longest_sorted_asc(l):
+    secvMax = []
+    for i in range(len(l)):
+        for j in range(i,len(l)):
+            if cresc(l[i:j]) and len(l[i:j]) > len(secvMax):
+                secvMax = l[i:j+1]
+    return secvMax
+
 
 def test_get_longest_all_primes():
     assert get_longest_all_primes([]) == []
@@ -56,14 +71,23 @@ def test_get_longest_same_bit_counts():
     assert get_longest_same_bit_counts([5,6,7,8]) == [5,6]
     assert get_longest_same_bit_counts([7,7,8,9]) == [7,7]
     assert get_longest_same_bit_counts([]) == []
+
+def test_get_longest_sorted_asc():
+    assert get_longest_sorted_asc([1,2,3,4,1]) == [1,2,3,4]
+    assert get_longest_sorted_asc([5,6,4,3]) == [5,6]
+    assert get_longest_sorted_asc([2,3,4,2,1]) == [2,3,4]
+    assert get_longest_sorted_asc([4,3,2,1,2,3]) == [1,2,3]
+
+
     
 def printMenu():
     print("1. Introduceti termenii sirului: ")
-    print("2. Determinare cea mai lunga subsecventa cu proprietatea: ")
-    print("3. Determinare cea mai lunga subsecventa cu proprietatea: ")
+    print("2. Determinare cea mai lunga subsecventa de nr prime : ")
+    print("3. Determinare cea mai lunga subsecventa de numere care au acelasi nr de 1 in scrierea binara: ")
+    print("4. Determinare cea mai lunga secventa de pperfecte: ")
     print("x. Iesire")
 
-def citireLista():
+def citire_Lista():
     l = []
     givenString = input("Dati nr de elemente separate prin virgula: ")
     numbersAsString = givenString.split(",")
@@ -80,11 +104,13 @@ def main():
         printMenu()
         optiune=input("Dati optiunea: ")
         if optiune =="1":
-            l=citireLista()
+            l=citire_Lista()
         elif optiune =="2":
             print(get_longest_all_primes(l))
         elif optiune =="3":
             print(get_longest_same_bit_counts(l))
+        elif optiune =="4":
+            print(get_longest_sorted_asc(l))
         elif optiune =="x":
             break
         else:
