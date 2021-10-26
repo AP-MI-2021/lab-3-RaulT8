@@ -82,7 +82,7 @@ def printMenu():
     print("1. Introduceti termenii sirului: ")
     print("2. Determinare cea mai lunga subsecventa de nr prime : ")
     print("3. Determinare cea mai lunga subsecventa de numere care au acelasi nr de 1 in scrierea binara: ")
-    print("4. Determinare cea mai lunga secventa de pperfecte: ")
+    print("4. Determinare cea mai lunga secventa de ordonate crescator: ")
     print("x. Iesire")
 
 def citire_Lista():
