@@ -28,10 +28,9 @@ def bits(n):
     return ones
 
 def cresc(l):
-    for i in range(len(l)):
-        for j in range(i+1,len(l)):
-            if int(l[i]) > int(l[j]):
-                return False
+    for i in range(len(l)-1):
+        if l[i] >= l[i+1]:
+            return False
     return True
 
 def get_longest_all_primes(l):
@@ -54,7 +53,7 @@ def get_longest_sorted_asc(l):
     secvMax = []
     for i in range(len(l)):
         for j in range(i,len(l)):
-            if cresc(l[i:j]) and len(l[i:j]) > len(secvMax):
+            if cresc(l[i:j+1]) and len(l[i:j+1]) > len(secvMax):
                 secvMax = l[i:j+1]
     return secvMax
 
@@ -76,7 +75,6 @@ def test_get_longest_sorted_asc():
     assert get_longest_sorted_asc([1,2,3,4,1]) == [1,2,3,4]
     assert get_longest_sorted_asc([5,6,4,3]) == [5,6]
     assert get_longest_sorted_asc([2,3,4,2,1]) == [2,3,4]
-    assert get_longest_sorted_asc([4,3,2,1,2,3]) == [1,2,3]
 
 
     
