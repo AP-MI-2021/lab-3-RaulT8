@@ -98,6 +98,7 @@ def citire_Lista():
 def main():
     test_get_longest_all_primes()
     test_get_longest_same_bit_counts()
+    test_get_longest_sorted_asc()
 
     l=[]
     while True:
